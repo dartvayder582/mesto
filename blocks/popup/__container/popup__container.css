@@ -3,7 +3,20 @@
   box-sizing: border-box;
   position: relative;
   width: 430px;
-  height: 330px;
   border-radius: 10px;
   background-color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__container {
+    padding: 25px;
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .popup__container {
+    padding: 25px;
+    width: 282px;
+  }
 }
