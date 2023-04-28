@@ -8,10 +8,11 @@
   width: 22px;
   height: 19px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .place__like-button:hover {
   opacity: .5;
+  transform: scale(1.3);
 }
 
