@@ -1,8 +1,8 @@
-/*vendor*/
+/*normalize*/
 @import url(../vendor/normalize.css);
 
 /*font*/
-@import url(../font/inter.css);
+@import url(../vendor/font/inter.css);
 
 /*общие правила*/
 @import url(../blocks/page/page.css);
@@ -28,7 +28,6 @@
 /*places*/
 @import url(../blocks/places/places.css);
 @import url(../blocks/place/place.css);
-
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__info/place__info.css);
 @import url(../blocks/place/__name/place__name.css);
@@ -41,7 +40,6 @@
 /*popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__body/popup__body.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 

@@ -26,50 +26,52 @@
       </div>
       <button type="button" class="profile__add-button" aria-label="Добавить место"></button>
     </section>
-    <ul class="places list-style">
-      <li class="place">
-        <img class="place__image" src="./images/baikal.jpg" alt="Замерзший Байкал">
-        <div class="place__info">
-          <h2 class="place__name">Озеро Байкал</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="place">
-        <img class="place__image" src="./images/dombai.png" alt="Домбай">
-        <div class="place__info">
-          <h2 class="place__name">Домбай</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="place">
-        <img class="place__image" src="./images/moscow.jpg" alt="Вечерняя Москва">
-        <div class="place__info">
-          <h2 class="place__name">Москва</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="place">
-        <img class="place__image" src="./images/elbrus.png" alt="Эльбрус">
-        <div class="place__info">
-          <h2 class="place__name">Гора Эльбрус</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="place">
-        <img class="place__image" src="./images/kchr.jpg" alt="Пейзажи Карачаево-Черкесии">
-        <div class="place__info">
-          <h2 class="place__name">Карачаево-Черкесия</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-      <li class="place">
-        <img class="place__image" src="./images/Olkhon-Island.jpg" alt="Вид на остров Ольхон">
-        <div class="place__info">
-          <h2 class="place__name">Остров Ольхон</h2>
-          <button type="button" class="place__like-button" aria-label="Нравится"></button>
-        </div>
-      </li>
-    </ul>
+    <section>
+      <ul class="places list-style">
+        <li class="place">
+          <img class="place__image" src="./images/baikal.jpg" alt="Замерзший Байкал">
+          <div class="place__info">
+            <h2 class="place__name">Озеро Байкал</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/dombai.png" alt="Домбай">
+          <div class="place__info">
+            <h2 class="place__name">Домбай</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/moscow.jpg" alt="Вечерняя Москва">
+          <div class="place__info">
+            <h2 class="place__name">Москва</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/elbrus.png" alt="Эльбрус">
+          <div class="place__info">
+            <h2 class="place__name">Гора Эльбрус</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/kchr.jpg" alt="Пейзажи Карачаево-Черкесии">
+          <div class="place__info">
+            <h2 class="place__name">Карачаево-Черкесия</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/Olkhon-Island.jpg" alt="Вид на остров Ольхон">
+          <div class="place__info">
+            <h2 class="place__name">Остров Ольхон</h2>
+            <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
@@ -77,11 +79,11 @@
   <div class="popup">
     <div class="popup__container">
       <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
-      <form class="form">
+      <form class="form" name="edit-profile" method="post">
         <h2 class="form__heading">Редактировать профиль</h2>
         <fieldset class="form__input-container">
-          <input type="text" class="form__item form__item_el_name" placeholder="Имя" value="" required>
-          <input type="text" class="form__item form__item_el_job" placeholder="О себе" value="" required>
+          <input type="text" class="form__item form__item_el_name" placeholder="Имя" name="user-name" value="" required>
+          <input type="text" class="form__item form__item_el_job" placeholder="О себе" name="user-job" value="" required>
         </fieldset>
         <button type="submit" class="form__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
