@@ -1,26 +1,10 @@
 .profile__info {
-  color: #fff;
-  position: relative;
-  max-width: 50%;
-  margin-right: 50px;
-}
-
-@media screen and (max-width: 1023px) {
-  .profile__info {
-    margin-right: 40px;
-  }
+  display: flex;
+  max-width: 55%;
 }
 
 @media screen and (max-width: 767px) {
   .profile__info {
-    text-align: center;
-    margin-right: 0;
-    max-width: 75%;
-  }
-}
-
-@media screen and (max-width: 424px) {
-  .profile__info {
-    max-width: 222px;
+    max-width: 100%;
   }
 }
