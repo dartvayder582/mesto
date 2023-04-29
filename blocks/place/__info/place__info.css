@@ -1,6 +1,5 @@
 .place__info {
-  padding: 0 20px 0;
-  min-height: 80px;
+  padding: 23px 20px 28px;
   display: flex;
   align-items: center;
 }
