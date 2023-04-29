@@ -21,10 +21,8 @@ closePopup.addEventListener('click', togglePopup);
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  let nameInputValue = nameInput.value;
-  let jobInputValue = jobInput.value;
-  profileName.textContent = nameInputValue;
-  profileJob.textContent = jobInputValue;
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
   togglePopup();
 }
 
