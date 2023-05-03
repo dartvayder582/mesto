@@ -1,30 +1,103 @@
-let editProfileButton = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let closePopup = document.querySelector('.popup__close-button');
-let formElement = popup.querySelector('.form');
-let nameInput = formElement.querySelector('.form__item_el_name');
-let jobInput = formElement.querySelector('.form__item_el_job');
-let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__job');
+//начальный массив
+const initialCards = [
+  {
+    name: 'Озеро Байкал',
+    link: './images/baikal.jpg'
+  },
+  {
+    name: 'Домбай',
+    link: './images/dombai.png'
+  },
+  {
+    name: 'Москва',
+    link: './images/moscow.jpg'
+  },
+  {
+    name: 'Гора Эльбрус',
+    link: './images/elbrus.png'
+  },
+  {
+    name: 'Карачаево-Черкесия',
+    link: './images/kchr.jpg'
+  },
+  {
+    name: 'Остров Ольхон',
+    link: './images/Olkhon-Island.jpg'
+  }
+];
 
-function togglePopup() {
-  popup.classList.toggle('popup_opened');
+//профиль
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__job');
+const editProfileButton = document.querySelector('.profile__edit-button');
+const editPopup = document.querySelector('.popup_type_edit');
+const closeEditPopup = editPopup.querySelector('.popup__close-button');
+const editFormElement = editPopup.querySelector('.form');
+const nameInput = editFormElement.querySelector('.form__item_el_name');
+const jobInput = editFormElement.querySelector('.form__item_el_job');
+
+//карточки
+const addCardButton = document.querySelector('.profile__add-button');
+const addPopup = document.querySelector('.popup_type_add');
+const closeAddPopup = addPopup.querySelector('.popup__close-button');
+const addFormElement = addPopup.querySelector('.form');
+const placeTitle = addFormElement.querySelector('.form__item_el_place-title');
+const placeImg = addFormElement.querySelector('.form__item_el_place-img');
+
+
+//const figPopup = document.querySelector('#popup_type_add');
+
+
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+
 
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  togglePopup();
+  openPopup(editPopup);
 });
 
-closePopup.addEventListener('click', togglePopup);
+closeEditPopup.addEventListener('click', function () {
+  closePopup(editPopup);
+});
 
-function handleFormSubmit(evt) {
+addCardButton.addEventListener('click', function () {
+  placeTitle.value = '';
+  placeImg.value = '';
+  openPopup(addPopup);
+});
+
+closeAddPopup.addEventListener('click', function () {
+  closePopup(addPopup);
+});
+
+
+
+
+function editFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  togglePopup();
+  closePopup(editPopup);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+// function addFormSubmit(evt) {
+//   evt.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileJob.textContent = jobInput.value;
+//   togglePopup(addPopup);
+// }
 
+
+
+
+editFormElement.addEventListener('submit', editFormSubmit);
+// addFormElement.addEventListener('submit', editFormSubmit);

@@ -76,18 +76,42 @@
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
-    <div class="popup__container">
+
+  <div class="popup popup_type_edit">
+    <div class="popup__container popup__container_edit">
       <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
       <form class="form" name="edit-profile" method="post">
         <h2 class="form__heading">Редактировать профиль</h2>
         <fieldset class="form__input-container">
           <input type="text" class="form__item form__item_el_name" placeholder="Имя" name="user-name" value="" required>
-          <input type="text" class="form__item form__item_el_job" placeholder="О себе" name="user-job" value="" required>
+          <input type="text" class="form__item form__item_el_job" placeholder="О себе" name="user-job" value=""
+            required>
         </fieldset>
         <button type="submit" class="form__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
+  </div>
+
+  <div class="popup popup_type_add">
+    <div class="popup__container popup__container_add">
+      <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+      <form class="form" name="add-place" method="post">
+        <h2 class="form__heading">Новое место</h2>
+        <fieldset class="form__input-container">
+          <input type="text" class="form__item form__item_el_place-title" placeholder="Название" name="place-title" value="" required>
+          <input type="text" class="form__item form__item_el_place-img" placeholder="Ссылка на картинку" name="place-img" value="" required>
+        </fieldset>
+        <button type="submit" class="form__submit-button" aria-label="Создать">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_fig">
+    <figure class="popup__container popup__container_fig">
+      <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+      <img class="popup__figure-image" src="#" alt="#">
+      <figcaption class="popup__figure-caption"></figcaption>
+    </figure>
   </div>
   <script src="././scripts/index.js"></script>
 </body>
