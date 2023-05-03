@@ -26,6 +26,59 @@ const initialCards = [
   }
 ];
 
+const deleteButton = document.querySelectorAll('.place__delete-button');
+const places = document.querySelector('.places');
+const cardTemplate = document.querySelector('.card-template').content;
+
+
+const createCard = (cardInfo) => {
+  const cardElement = cardTemplate.querySelector('.place').cloneNode(true);
+  cardElement.querySelector('.place__name').textContent = cardInfo.name;
+  cardElement.querySelector('.place__image').src = cardInfo.link;
+  cardElement.querySelector('.place__image').alt = cardInfo.name;
+  const likeButton = cardElement.querySelector('.place__like-button');
+  const deleteButton = cardElement.querySelector('.place__delete-button');
+
+  const likeElement = () => {
+    likeButton.classList.toggle('place__like-button_active');
+  }
+  const deleteElement = () => {
+    cardElement.remove();
+  }
+
+  likeButton.addEventListener('click', likeElement);
+  deleteButton.addEventListener('click', deleteElement);
+  // cardElement.querySelector('.place__delete-button').addEventListener('click', function() {
+  //   cardElement.remove();
+  // });
+  return cardElement;
+}
+
+initialCards.forEach(function (element) {
+  //   cardElement.querySelector('.place__like-button').addEventListener('click', function (event) {
+  //     event.target.classList.toggle('place__like-button_active');
+  //   });
+  // const element = createCard(item);
+  places.prepend(createCard(element));
+});
+
+//удаление карточек
+
+
+// добавим обработчик
+// deleteButton.addEventListener('click', function () {
+//   const listItem = deleteButton.closest('.place');
+//   listItem.remove();
+// });
+
+// deleteButton.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//       const cartItem = btn.closest('.place');
+//       cartItem.parentNode.removeChild(cartItem);
+//   });
+// });
+
+
 //профиль
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
@@ -37,12 +90,14 @@ const nameInput = editFormElement.querySelector('.form__item_el_name');
 const jobInput = editFormElement.querySelector('.form__item_el_job');
 
 //карточки
+const placeTitle = document.querySelector('.place__name');
+const placeImg = document.querySelector('.place__image');
 const addCardButton = document.querySelector('.profile__add-button');
 const addPopup = document.querySelector('.popup_type_add');
 const closeAddPopup = addPopup.querySelector('.popup__close-button');
 const addFormElement = addPopup.querySelector('.form');
-const placeTitle = addFormElement.querySelector('.form__item_el_place-title');
-const placeImg = addFormElement.querySelector('.form__item_el_place-img');
+const titlePlaceInput = addFormElement.querySelector('.form__item_el_place-title');
+const imgPlaceInput = addFormElement.querySelector('.form__item_el_place-img');
 
 
 //const figPopup = document.querySelector('#popup_type_add');
@@ -70,8 +125,8 @@ closeEditPopup.addEventListener('click', function () {
 });
 
 addCardButton.addEventListener('click', function () {
-  placeTitle.value = '';
-  placeImg.value = '';
+  titlePlaceInput.value = '';
+  imgPlaceInput.value = '';
   openPopup(addPopup);
 });
 
@@ -89,15 +144,18 @@ function editFormSubmit(evt) {
   closePopup(editPopup);
 }
 
-// function addFormSubmit(evt) {
-//   evt.preventDefault();
-//   profileName.textContent = nameInput.value;
-//   profileJob.textContent = jobInput.value;
-//   togglePopup(addPopup);
-// }
+function addFormSubmit(evt) {
+  evt.preventDefault();
+  const addFormInput = {
+    name: titlePlaceInput.value,
+    link: imgPlaceInput.value,
+  }
+  places.prepend(createCard(addFormInput));
+  closePopup(addPopup);
+}
 
 
 
 
 editFormElement.addEventListener('submit', editFormSubmit);
-// addFormElement.addEventListener('submit', editFormSubmit);
+addFormElement.addEventListener('submit', addFormSubmit);

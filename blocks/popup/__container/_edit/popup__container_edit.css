@@ -4,3 +4,16 @@
   background-color: #fff;
   padding: 35px;
 }
+
+@media screen and (max-width: 767px) {
+  .popup__container_edit {
+    padding: 25px;
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .popup__container_edit {
+    width: 282px;
+  }
+}
