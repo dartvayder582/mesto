@@ -26,6 +26,13 @@ const initialCards = [
   }
 ];
 
+//попап картинки
+const figPopup = document.querySelector('.popup_type_figure');
+const closeFigPopup = figPopup.querySelector('.popup__close-button');
+const figImg = figPopup.querySelector('.popup__figure-image');
+const figCaption = figPopup.querySelector('.popup__figure-caption');
+
+
 const deleteButton = document.querySelectorAll('.place__delete-button');
 const places = document.querySelector('.places');
 const cardTemplate = document.querySelector('.card-template').content;
@@ -34,8 +41,9 @@ const cardTemplate = document.querySelector('.card-template').content;
 const createCard = (cardInfo) => {
   const cardElement = cardTemplate.querySelector('.place').cloneNode(true);
   cardElement.querySelector('.place__name').textContent = cardInfo.name;
-  cardElement.querySelector('.place__image').src = cardInfo.link;
-  cardElement.querySelector('.place__image').alt = cardInfo.name;
+  const placeImg = cardElement.querySelector('.place__image');
+  placeImg.src = cardInfo.link;
+  placeImg.alt = cardInfo.name;
   const likeButton = cardElement.querySelector('.place__like-button');
   const deleteButton = cardElement.querySelector('.place__delete-button');
 
@@ -48,6 +56,14 @@ const createCard = (cardInfo) => {
 
   likeButton.addEventListener('click', likeElement);
   deleteButton.addEventListener('click', deleteElement);
+
+
+
+  placeImg.addEventListener('click', function () {
+    figImg.src = cardInfo.link;
+    figCaption.textContent = cardInfo.name;
+    openPopup(figPopup);
+  });
   // cardElement.querySelector('.place__delete-button').addEventListener('click', function() {
   //   cardElement.remove();
   // });
@@ -100,7 +116,7 @@ const titlePlaceInput = addFormElement.querySelector('.form__item_el_place-title
 const imgPlaceInput = addFormElement.querySelector('.form__item_el_place-img');
 
 
-//const figPopup = document.querySelector('#popup_type_add');
+
 
 
 
@@ -135,7 +151,9 @@ closeAddPopup.addEventListener('click', function () {
 });
 
 
-
+closeFigPopup.addEventListener('click', function () {
+  closePopup(figPopup);
+});
 
 function editFormSubmit(evt) {
   evt.preventDefault();
