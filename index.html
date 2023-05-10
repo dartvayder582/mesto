@@ -42,10 +42,10 @@
       <form class="form" name="editProfile" method="post" novalidate>
         <h2 class="form__heading">Редактировать профиль</h2>
         <fieldset class="form__input-container">
-          <input type="text" class="form__input form__item_el_name" id="user-name" placeholder="Имя" name="userName"
+          <input type="text" class="form__input" id="user-name" placeholder="Имя" name="userName"
             value="" required minlength="2" maxlength="40">
           <span class="form__error user-name-error"></span>
-          <input type="text" class="form__input form__item_el_job" id="user-job" placeholder="О себе" name="userJob"
+          <input type="text" class="form__input" id="user-job" placeholder="О себе" name="userJob"
             value="" required minlength="2" maxlength="200">
           <span class="form__error user-job-error"></span>
         </fieldset>
@@ -60,10 +60,10 @@
       <form class="form" name="addPlace" method="post" novalidate>
         <h2 class="form__heading">Новое место</h2>
         <fieldset class="form__input-container">
-          <input type="text" class="form__input form__item_el_place-title" id="place-title" placeholder="Название"
+          <input type="text" class="form__input" id="place-title" placeholder="Название"
             name="placeTitle" value="" required minlength="2" maxlength="30">
           <span class="form__error place-title-error"></span>
-          <input type="url" class="form__input form__item_el_place-img" id="place-img" placeholder="Ссылка на картинку"
+          <input type="url" class="form__input" id="place-img" placeholder="Ссылка на картинку"
             name="placeImg" value="" required>
           <span class="form__error place-img-error"></span>
         </fieldset>

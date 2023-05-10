@@ -101,7 +101,8 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-//сброс ошибок при открытии popup
+
+//сброс ошибок при открытии формы
 function resetErrorMessage(form) {
   const inputElement = Array.from(form.querySelectorAll('.form__input'));
   const errorElement = Array.from(form.querySelectorAll('.form__error'));
@@ -146,6 +147,31 @@ closeAddPopup.addEventListener('click', function () {
 closeFigPopup.addEventListener('click', function () {
   closePopup(figPopup);
 });
+
+//оверлей
+function overlayClosePopup(popup) {
+  popup.addEventListener('mousedown', function (e) {
+    if (!e.target.closest('.popup__container')) {
+      closePopup(popup);
+    }
+  });
+}
+
+//esc
+function escClosePopup(popup) {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+}
+
+overlayClosePopup(editPopup);
+overlayClosePopup(addPopup);
+overlayClosePopup(figPopup);
+escClosePopup(editPopup);
+escClosePopup(addPopup);
+escClosePopup(figPopup);
 
 //submit forms
 function editFormSubmit() {
