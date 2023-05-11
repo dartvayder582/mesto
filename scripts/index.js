@@ -96,31 +96,36 @@ initialCards.forEach(function (element) {
 //Открытие и закрытие popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', escClosePopup);
+  popup.addEventListener('mousedown', overlayClosePopup);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', escClosePopup);
+  popup.removeEventListener('mousedown', overlayClosePopup);
 }
 
+//оверлей
+function overlayClosePopup(e) {
+  if (!e.target.closest('.popup__container')) {
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
+  }
+}
 
-//сброс ошибок при открытии формы
-function resetErrorMessage(form) {
-  const inputElement = Array.from(form.querySelectorAll('.form__input'));
-  const errorElement = Array.from(form.querySelectorAll('.form__error'));
-
-  inputElement.forEach((item) => {
-    item.classList.remove('form__input_type_error');
-  });
-  errorElement.forEach((item) => {
-    item.classList.remove('form__error_visible');
-    item.textContent = '';
-  });
+//esc
+function escClosePopup(e) {
+  if (e.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
+  }
 }
 
 //edit
 editProfileButton.addEventListener('click', function () {
-  resetErrorMessage(editForm);
-  editSubmitButton.disabled = false;
-  editSubmitButton.classList.remove('form__submit-button_disabled');
+  hideInputError(editForm, nameInput);
+  hideInputError(editForm, jobInput);
+  disabledButton(editSubmitButton);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(editPopup);
@@ -132,10 +137,10 @@ closeEditPopup.addEventListener('click', function () {
 
 //add
 addCardButton.addEventListener('click', function () {
-  resetErrorMessage(addForm);
+  hideInputError(addForm, titlePlaceInput);
+  hideInputError(addForm, imgPlaceInput);
   addForm.reset();
-  addSubmitButton.disabled = true;
-  addSubmitButton.classList.add('form__submit-button_disabled');
+  activeButton(addSubmitButton);
   openPopup(addPopup);
 });
 
@@ -147,31 +152,6 @@ closeAddPopup.addEventListener('click', function () {
 closeFigPopup.addEventListener('click', function () {
   closePopup(figPopup);
 });
-
-//оверлей
-function overlayClosePopup(popup) {
-  popup.addEventListener('mousedown', function (e) {
-    if (!e.target.closest('.popup__container')) {
-      closePopup(popup);
-    }
-  });
-}
-
-//esc
-function escClosePopup(popup) {
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-}
-
-overlayClosePopup(editPopup);
-overlayClosePopup(addPopup);
-overlayClosePopup(figPopup);
-escClosePopup(editPopup);
-escClosePopup(addPopup);
-escClosePopup(figPopup);
 
 //submit forms
 function editFormSubmit() {
@@ -191,3 +171,4 @@ function addFormSubmit() {
 
 editForm.addEventListener('submit', editFormSubmit);
 addForm.addEventListener('submit', addFormSubmit);
+
