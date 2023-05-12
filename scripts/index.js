@@ -82,6 +82,7 @@ const createCard = (cardInfo) => {
 
   placeImg.addEventListener('click', function () {
     figImg.src = cardInfo.link;
+    figImg.alt = cardInfo.name;
     figCaption.textContent = cardInfo.name;
     openPopup(figPopup);
   });
