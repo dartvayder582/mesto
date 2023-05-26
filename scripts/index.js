@@ -1,31 +1,3 @@
-//карточки при загрузке страницы
-const initialCards = [
-  {
-    name: 'Озеро Байкал',
-    link: './images/baikal.jpg'
-  },
-  {
-    name: 'Домбай',
-    link: './images/dombai.png'
-  },
-  {
-    name: 'Москва',
-    link: './images/moscow.jpg'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: './images/elbrus.png'
-  },
-  {
-    name: 'Карачаево-Черкесия',
-    link: './images/kchr.jpg'
-  },
-  {
-    name: 'Остров Ольхон',
-    link: './images/Olkhon-Island.jpg'
-  }
-];
-
 //профиль
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
@@ -53,49 +25,68 @@ const imgPlaceInput = addForm.elements.placeImg;
 const addSubmitButton = addForm.querySelector('.form__submit-button');
 
 //попап картинки
-const figPopup = document.querySelector('.popup_type_figure');
+export const figPopup = document.querySelector('.popup_type_figure');
 const closeFigPopup = figPopup.querySelector('.popup__close-button');
-const figImg = figPopup.querySelector('.popup__figure-image');
-const figCaption = figPopup.querySelector('.popup__figure-caption');
 
-//создание карточки
+//валидация
+import { FormValidator } from './FormValidator.js';
+
+const validationConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_visible',
+};
+
+const addFormValidator = new FormValidator(validationConfig, addForm);
+addFormValidator.enableValidation();
+const editFormValidator = new FormValidator(validationConfig, editForm);
+editFormValidator.enableValidation();
+
+//карточки
 const places = document.querySelector('.places');
-const createCard = (cardInfo) => {
-  const cardTemplate = document.querySelector('.card-template').content;
-  const cardElement = cardTemplate.querySelector('.place').cloneNode(true);
-  cardElement.querySelector('.place__name').textContent = cardInfo.name;
-  const placeImg = cardElement.querySelector('.place__image');
-  placeImg.src = cardInfo.link;
-  placeImg.alt = cardInfo.name;
-  const likeButton = cardElement.querySelector('.place__like-button');
-  const deleteButton = cardElement.querySelector('.place__delete-button');
 
-  const likeElement = () => {
-    likeButton.classList.toggle('place__like-button_active');
+const initialCards = [
+  {
+    name: 'Озеро Байкал',
+    link: './images/baikal.jpg'
+  },
+  {
+    name: 'Домбай',
+    link: './images/dombai.png'
+  },
+  {
+    name: 'Москва',
+    link: './images/moscow.jpg'
+  },
+  {
+    name: 'Гора Эльбрус',
+    link: './images/elbrus.png'
+  },
+  {
+    name: 'Карачаево-Черкесия',
+    link: './images/kchr.jpg'
+  },
+  {
+    name: 'Остров Ольхон',
+    link: './images/Olkhon-Island.jpg'
   }
-  const deleteElement = () => {
-    cardElement.remove();
-  }
+];
 
-  likeButton.addEventListener('click', likeElement);
-  deleteButton.addEventListener('click', deleteElement);
+import { Card } from './Card.js';
 
-  placeImg.addEventListener('click', function () {
-    figImg.src = cardInfo.link;
-    figImg.alt = cardInfo.name;
-    figCaption.textContent = cardInfo.name;
-    openPopup(figPopup);
-  });
-
-  return cardElement;
+function createCard(element) {
+  const card = new Card(element, '.card-template');
+  const cardElement = card.createCard();
+  places.prepend(cardElement);
 }
 
-initialCards.forEach(function (element) {
-  places.prepend(createCard(element));
-});
+initialCards.forEach((element) => createCard(element));
 
 //Открытие и закрытие popup
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', escClosePopup);
   popup.addEventListener('mousedown', overlayClosePopup);
@@ -124,9 +115,9 @@ function escClosePopup(e) {
 
 //edit
 editProfileButton.addEventListener('click', function () {
-  hideInputError(editForm, nameInput);
-  hideInputError(editForm, jobInput);
-  disabledButton(editSubmitButton);
+  editFormValidator.hideInputError(nameInput);
+  editFormValidator.hideInputError(jobInput);
+  editFormValidator.disabledButton(editSubmitButton);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(editPopup);
@@ -138,10 +129,10 @@ closeEditPopup.addEventListener('click', function () {
 
 //add
 addCardButton.addEventListener('click', function () {
-  hideInputError(addForm, titlePlaceInput);
-  hideInputError(addForm, imgPlaceInput);
+  addFormValidator.hideInputError(titlePlaceInput);
+  addFormValidator.hideInputError(imgPlaceInput);
   addForm.reset();
-  activeButton(addSubmitButton);
+  addFormValidator.activeButton(addSubmitButton);
   openPopup(addPopup);
 });
 
@@ -166,10 +157,9 @@ function addFormSubmit() {
     name: titlePlaceInput.value,
     link: imgPlaceInput.value,
   }
-  places.prepend(createCard(addFormInput));
+  createCard(addFormInput);
   closePopup(addPopup);
 }
 
 editForm.addEventListener('submit', editFormSubmit);
 addForm.addEventListener('submit', addFormSubmit);
-
