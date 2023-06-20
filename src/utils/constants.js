@@ -6,8 +6,6 @@ export const editPopup = document.querySelector('.popup_type_edit');
 
 //форма профиля
 export const editForm = document.forms.editProfile;
-export const nameInput = editForm.elements.userName;
-export const jobInput = editForm.elements.userJob;
 export const editSubmitButton = editForm.querySelector('.form__submit-button');
 
 //карточки

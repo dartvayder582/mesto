@@ -13,8 +13,6 @@ import {
   editProfileButton,
   editPopup,
   editForm,
-  nameInput,
-  jobInput,
   editSubmitButton,
   addCardButton,
   addPopup,
@@ -92,8 +90,7 @@ const profilePopup = new PopupWithForm(
 
 editProfileButton.addEventListener('click', function () {
   editFormValidator.resetValidation();
-  nameInput.value = profileInfo.getUserInfo().name;
-  jobInput.value = profileInfo.getUserInfo().job;
+  profilePopup.setInputValues(profileInfo.getUserInfo());
   editFormValidator.activeButton(editSubmitButton);
   profilePopup.open();
 });
