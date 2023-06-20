@@ -5,18 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./images/icon.png">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="icon" href="<%=require('./images/icon.png')%>">
+
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo-mesto.svg" alt="Место. Россия">
+    <img class="header__logo" src="<%=require('./images/logo-mesto.svg')%>" alt="Место. Россия">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/image.jpg" alt="Фото профиля">
+      <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Фото профиля">
       <div class="profile__info">
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -90,15 +90,7 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./pages/index.js"></script>
-  <script type="module" src="./components/Card.js"></script>
-  <script type="module" src="./components/FormValidator.js"></script>
-  <script type="module" src="./components/Section.js"></script>
-  <script type="module" src="./components/Popup.js"></script>
-  <script type="module" src="./components/PopupWithForm.js"></script>
-  <script type="module" src="./components/PopupWithImage.js"></script>
-  <script type="module" src="./components/UserInfo.js"></script>
-  <script type="module" src="./utils/constants.js"></script>
+
 </body>
 
 </html>

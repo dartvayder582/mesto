@@ -34,29 +34,36 @@ export const validationConfig = {
 //карточки
 export const places = '.places';
 
+const baikal = new URL('../images/baikal.jpg', import.meta.url);
+const dombai = new URL('../images/dombai.png', import.meta.url);
+const moscow = new URL('../images/moscow.jpg', import.meta.url);
+const elbrus = new URL('../images/elbrus.png', import.meta.url);
+const kchr = new URL('../images/kchr.jpg', import.meta.url);
+const olkhon = new URL('../images/Olkhon-Island.jpg', import.meta.url);
+
 export const initialCards = [
   {
     name: 'Озеро Байкал',
-    link: './images/baikal.jpg'
+    link: baikal
   },
   {
     name: 'Домбай',
-    link: './images/dombai.png'
+    link: dombai
   },
   {
     name: 'Москва',
-    link: './images/moscow.jpg'
+    link: moscow
   },
   {
     name: 'Гора Эльбрус',
-    link: './images/elbrus.png'
+    link: elbrus
   },
   {
     name: 'Карачаево-Черкесия',
-    link: './images/kchr.jpg'
+    link: kchr
   },
   {
     name: 'Остров Ольхон',
-    link: './images/Olkhon-Island.jpg'
+    link: olkhon
   }
 ];
