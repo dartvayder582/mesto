@@ -48,7 +48,7 @@ export default class Card {
     this._cardLikes.textContent = likes.length;
   }
 
-  _deleteCard() {
+  deleteCard() {
     this._element.remove();
   }
 
@@ -60,7 +60,7 @@ export default class Card {
     );
     this._toggleDeleteButton().addEventListener('click', () => {
       this._deleteCardPopup.open();
-      this._deleteCardPopup.deleteConfirm(this._cardId);
+      this._deleteCardPopup.deleteConfirm(this._element, this._cardId);
     });
   }
 

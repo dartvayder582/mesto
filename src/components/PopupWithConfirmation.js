@@ -7,7 +7,7 @@ export default class PopupWithConfirmation extends Popup {
     this._confirmFunction = confirmFunction;
   }
 
-  deleteConfirm(cardId) {
-    this._confirmButton.addEventListener('click', () => this._confirmFunction(cardId));
+  deleteConfirm(card, cardId) {
+    this._confirmButton.addEventListener('click', () => this._confirmFunction(card, cardId));
   }
 }

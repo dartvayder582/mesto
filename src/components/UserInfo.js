@@ -19,4 +19,10 @@ export default class UserInfo {
     this._job.textContent = data.about;
     this._avatar.style.backgroundImage = `url(${data.avatar})`;
   }
+
+  userID() {
+    this._myID = '17b69bd60b444b9c52b43b65';
+    return this._myID
+  }
 }
+
