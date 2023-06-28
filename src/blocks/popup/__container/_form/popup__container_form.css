@@ -1,19 +1,17 @@
-.popup__container_edit {
+.popup__container_form {
   width: 430px;
   border-radius: 10px;
   background-color: #fff;
-  padding: 35px;
 }
 
 @media screen and (max-width: 767px) {
-  .popup__container_edit {
-    padding: 25px;
+  .popup__container_form {
     width: 330px;
   }
 }
 
 @media screen and (max-width: 424px) {
-  .popup__container_edit {
+  .popup__container_form {
     width: 282px;
   }
 }

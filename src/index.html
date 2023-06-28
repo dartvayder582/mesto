@@ -16,11 +16,14 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Фото профиля">
+      <div class="profile__avatar">
+        <button type="button" class="profile__avatar-button" aria-label="Редактировать фото профиля"></button>
+      </div>
+      <!-- <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Фото профиля"> -->
       <div class="profile__info">
         <div class="profile__text">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__job">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__job"></p>
         </div>
         <button type="button" class="profile__edit-button" aria-label="Радактировать профиль"></button>
       </div>
@@ -35,9 +38,9 @@
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
-
+  <!-- попапы -->
   <div class="popup popup_type_edit">
-    <div class="popup__container popup__container_edit">
+    <div class="popup__container popup__container_form">
       <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
       <form class="form" name="editProfile" method="post" novalidate>
         <h2 class="form__heading">Редактировать профиль</h2>
@@ -53,9 +56,8 @@
       </form>
     </div>
   </div>
-
   <div class="popup popup_type_add">
-    <div class="popup__container popup__container_add">
+    <div class="popup__container popup__container_form">
       <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
       <form class="form" name="addPlace" method="post" novalidate>
         <h2 class="form__heading">Новое место</h2>
@@ -71,7 +73,20 @@
       </form>
     </div>
   </div>
-
+  <div class="popup popup_type_avatar">
+    <div class="popup__container popup__container_form">
+      <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+      <form class="form" name="avatarProfile" method="post" novalidate>
+        <h2 class="form__heading">Обновить аватар</h2>
+        <fieldset class="form__input-container">
+          <input type="url" class="form__input" id="user-avatar" placeholder="Ссылка на картинку" name="userAvatar"
+            value="" required>
+          <span class="form__error user-avatar-error"></span>
+        </fieldset>
+        <button type="submit" class="form__submit-button" aria-label="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <div class="popup popup_type_figure">
     <figure class="popup__container popup__container_fig">
       <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
@@ -79,14 +94,32 @@
       <figcaption class="popup__figure-caption"></figcaption>
     </figure>
   </div>
+  <div class="popup popup_type_delete">
+    <div class="popup__container popup__container_confirm">
+      <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+      <!-- <form class="form" name="avatarProfile" method="post" novalidate> -->
+      <h2 class="form__heading confirm__heading">Вы уверены?</h2>
+      <!-- <fieldset class="form__input-container">
+          <input type="url" class="form__input" id="user-avatar" placeholder="Ссылка на картинку" name="userAvatar"
+            value="" required>
+          <span class="form__error user-avatar-error"></span>
+        </fieldset> -->
+      <button type="button" class="form__submit-button confirm__button" aria-label="Сохранить">Да</button>
+      <!-- </form> -->
+    </div>
+  </div>
 
   <template class="card-template">
     <li class="place">
-      <button type="button" class="place__delete-button" aria-label="Удалить"></button>
+      <button type="button" class="place__delete-button place__delete-button_active" aria-label="Удалить"></button>
       <img class="place__image" src="#" alt="#">
       <div class="place__info">
         <h2 class="place__name"></h2>
-        <button type="button" class="place__like-button" aria-label="Нравится"></button>
+        <div class="place__like">
+          <button type="button" class="place__like-button" aria-label="Нравится"></button>
+          <span class="place__like-count">0</span>
+        </div>
+
       </div>
     </li>
   </template>
