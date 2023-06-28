@@ -142,11 +142,12 @@ const deleteCardPopup = new PopupWithConfirmation(
     confirmFunction: (card, cardId) => {
       api.deleteCard(cardId)
         .then(() => {
-          // cardContainer.replaceChildren();
-          // sortCards();
           card.deleteCard()
           deleteCardPopup.close();
-        });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
   }
 );
