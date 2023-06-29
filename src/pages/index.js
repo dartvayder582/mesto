@@ -119,7 +119,7 @@ function createCard(element, userId) {
 
 const newCardSection = new Section({
   items: [],
-  renderer: (item) => newCardSection.addItemAppend(createCard(item, id))
+  renderer: (item) => newCardSection.addItemPrepend(createCard(item, id))
 }, places);
 
 addCardButton.addEventListener('click', function () {
