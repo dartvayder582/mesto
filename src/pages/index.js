@@ -29,8 +29,7 @@ import {
   places,
   avatarProfileButton,
   avatarPopup,
-  statusText,
-  cardContainer
+  statusText
 } from '../utils/constants.js';
 
 //экземпляры валидации
@@ -71,12 +70,30 @@ function createCard(element, userId) {
     element,
     '.card-template',
     userId,
-    handleCardClick,
-    deleteCardPopup,
     {
-      handleLikeCard: (likeButton, cardId) => {
+      handleCardClick: () => {
+        imgPopup.open(element.name, element.link)
+      }
+    },
+    {
+      handleCardDelete: () => {
+        deleteCardPopup.open();
+        deleteCardPopup.setHandleSubmit(() => {
+          api.deleteCard(element._id)
+            .then(() => {
+              card.deleteCard();
+              deleteCardPopup.close();
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        })
+      }
+    },
+    {
+      handleLikeCard: (likeButton) => {
         if (likeButton.classList.contains('place__like-button_active')) {
-          return api.deleteLike(cardId)
+          return api.deleteLike(element._id)
             .then((res) => {
               card.likeCard(res.likes)
             })
@@ -84,7 +101,7 @@ function createCard(element, userId) {
               console.log(err);
             });
         } else {
-          return api.addLike(cardId)
+          return api.addLike(element._id)
             .then((res) => {
               card.likeCard(res.likes)
             })
@@ -136,28 +153,10 @@ const newCardPopup = new PopupWithForm(
 );
 
 //попап удаления карточки
-const deleteCardPopup = new PopupWithConfirmation(
-  deletePopup,
-  {
-    confirmFunction: (card, cardId) => {
-      api.deleteCard(cardId)
-        .then(() => {
-          card.deleteCard()
-          deleteCardPopup.close();
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }
-  }
-);
+const deleteCardPopup = new PopupWithConfirmation(deletePopup);
 
 //попап с картинкой
 const imgPopup = new PopupWithImage(figPopup)
-
-function handleCardClick(name, link) {
-  imgPopup.open(name, link);
-}
 
 //ПРОФИЛЬ
 const profileInfo = new UserInfo({

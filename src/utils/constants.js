@@ -14,7 +14,6 @@ export const avatarForm = document.forms.avatarProfile;
 export const avatarSubmitButton = avatarForm.querySelector('.form__submit-button');
 
 //карточки
-export const cardContainer = document.querySelector('.places');
 export const addCardButton = document.querySelector('.profile__add-button');
 export const addPopup = document.querySelector('.popup_type_add');
 export const deletePopup = document.querySelector('.popup_type_delete');
